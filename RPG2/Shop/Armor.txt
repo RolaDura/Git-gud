@@ -1,0 +1,39 @@
+Cloth Armor
+25
+1500
+
+Hood
+35
+2500
+
+Leather Armor
+50
+5000
+
+Bronze Armor
+75
+7500
+
+Steel Armor
+100
+10000
+
+Silver Armor
+150
+25000
+
+Golden Armor
+200
+40000
+
+Titanium Armor
+300
+70000
+
+Dragon Armor
+500
+150000
+
+Armor of Achilles
+3000
+700000

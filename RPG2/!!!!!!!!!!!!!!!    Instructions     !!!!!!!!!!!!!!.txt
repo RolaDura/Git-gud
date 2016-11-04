@@ -1,0 +1,3 @@
+﻿Use JGrasp lattest version
+Run the run.java program ( it is the static void main )
+ENJOY!

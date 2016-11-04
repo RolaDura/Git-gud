@@ -1,0 +1,41 @@
+Iron Sword
+25
+1500
+
+Glass Sword
+35
+2500
+
+Bronze Sword
+50
+5000
+
+Steel Sword
+75
+7500
+
+Silver Sword
+100
+10000
+
+Katana
+150
+25000
+
+Golden Sword
+200
+40000
+
+Curved Blade
+300
+70000
+
+Ignis Sword
+500
+150000
+
+Excalibur
+3000
+700000
+
+
