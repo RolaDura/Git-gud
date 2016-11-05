@@ -2,7 +2,8 @@ import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 public class Enemy 
-{private String name[] = new String[100];
+{
+   private String name[] = new String[100];
    private int[]level = new int[100];
    private int[]atk = new int[100];
    private int[]def = new int[100];
@@ -12,11 +13,13 @@ public class Enemy
    private int[]met = new int[100];
    private ImageIcon[] enemyImage = new ImageIcon[100];
    public Enemy() throws IOException
-   {String lvl, h, at, df, x, mn, mt, str;
+   {
+      String lvl, h, at, df, x, mn, mt, str;
       BufferedReader read = new BufferedReader(new FileReader("Enemy.txt"));
       str = read.readLine();
       for(int i = 0; i < name.length; i++)
-      {name[i] = read.readLine();
+      {
+         name[i] = read.readLine();
          lvl = read.readLine();
          h = read.readLine();
          at = read.readLine();
@@ -59,54 +62,68 @@ public class Enemy
       read.close();
    }
    public void readMet()throws IOException
-   {BufferedReader read = new BufferedReader(new FileReader("Met.txt"));
+   {
+      BufferedReader read = new BufferedReader(new FileReader("Met.txt"));
       String mt;
       for(int i = 0; i < met.length; i++)
-      {mt = read.readLine();
-         met[i] = Integer.parseInt(mt);}
-      read.close();}
+      {
+         mt = read.readLine();
+         met[i] = Integer.parseInt(mt);
+      }
+      read.close();
+   }
 
    public void writeMet()throws IOException
-   {PrintWriter write = new PrintWriter(new FileWriter("Met.txt"));
-      for(int i = 0; i < met.length; i++)
-         write.println(met[i]);
-      write.close();}
+   {
+      PrintWriter write = new PrintWriter(new FileWriter("Met.txt"));
+      for(int i = 0; i < met.length; i++) write.println(met[i]);
+      write.close();
+   }
    
    public void met(int i)
-   {met[i] = 1;
+   {
+      met[i] = 1;
    }
    
    public String getName(int i)
    {
-      return name[i];}
+      return name[i];
+   }
       
    public int getLevel(int i)
    {
-      return level[i];}
+      return level[i];
+   }
       
    public int getHp(int i)
    {
-      return hp[i];}
+      return hp[i];
+   }
       
    public int getAtk(int i)
    {
-      return atk[i];}
+      return atk[i];
+   }
       
    public int getDef(int i)
    {
-      return def[i];}
+      return def[i];
+   }
       
    public int getMoney(int i)
    {
-      return money[i] ;}
+      return money[i] ;
+   }
       
    public int getMet(int i)
    {
-      return met[i];}
+      return met[i];
+   }
       
    public int getXp(int i)
    {
-      return xp[i];}
+      return xp[i];
+   }
       
    public ImageIcon getMonster(int i)
    {

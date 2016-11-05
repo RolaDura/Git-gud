@@ -46,9 +46,7 @@ public class Character
       money = 1000;
       gender = g;
       xp = 0;
-      for(int i = 0; i < item.length; i++)
-      {item[i] = 1;
-      }
+      for(int i = 0; i < item.length; i++) item[i] = 1;
       characterImage = new ImageIcon("Image/" + gender + job + ".jpg", gender + job + ".jpg");
       weapon = 10;
       armor = 10;
@@ -84,7 +82,8 @@ public class Character
    }
 
    public int getAtk ()
-   {int totalAtk = 0;
+   {
+      int totalAtk = 0;
       switch (job)
       {
          case "Assassin":
@@ -101,7 +100,8 @@ public class Character
 
 
    public int getDef ()
-   {int totalDef = 0;
+   {
+      int totalDef = 0;
       switch (job)
       {  
          case "Assassin":
@@ -118,7 +118,8 @@ public class Character
    
    public int getWeapon()
    {
-      return weapon;}
+      return weapon;
+   }
    
    public int getArmor()
    {
@@ -188,7 +189,8 @@ public class Character
       xp += x;
       money += m;
       while(xp > level * 100)
-      {  xp = xp - level*100;
+      {  
+         xp = xp - level*100;
          level++;
          hp += 100;
          if (job.compareTo("Assassin")==0)
@@ -276,24 +278,37 @@ public class Character
    }
    
    public void setArmor(int i)
-   {armor = i;}
+   {
+      armor = i;
+   }
    
    public void setWeaponName(String n)
-   {weaponName = n;}
+   {
+      weaponName = n;
+   }
    
    public void setArmorName(String n)
-   {armorName = n;}
+   {
+      armorName = n;
+   }
 
    public void spend(int m)
-   {money -= m;}
+   {
+      money -= m;
+   }
    
    public void buyItem(int i)
-   {item[i] += 1;}
+   {
+      item[i] += 1;
+   }
    
    public void useItem(int i)
-   {item[i] -= 1;}
+   {
+      item[i] -= 1;
+   }
    
    public int getItem(int i)
    {
-      return item[i];}
+      return item[i];
+   }
 }

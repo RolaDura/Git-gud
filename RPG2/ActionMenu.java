@@ -3,7 +3,8 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
 public class ActionMenu extends JFrame
-{  private int width = 700;
+{  
+   private int width = 700;
    private int height = 500;
    private JButton attack, defend, item, run, mainMenu, save, menub;
    private JPanel panel, menu, action, hero, mons;
@@ -41,7 +42,8 @@ public class ActionMenu extends JFrame
       setVisible(true);
    }
    public void buildActionPanel()
-   {attack = new JButton("Attack");
+   {
+      attack = new JButton("Attack");
       defend = new JButton("Defend");
       item = new JButton("Item");
       run = new JButton("Run");
@@ -57,7 +59,8 @@ public class ActionMenu extends JFrame
       panel.add(run);
    }
    public void buildMenuPanel()
-   {menu = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+   {
+      menu = new JPanel(new FlowLayout(FlowLayout.RIGHT));
       menub = new JButton("Options");
       menub.addActionListener(new MenuListener());
       mainMenu = new JButton("Back to Main Menu");
@@ -66,7 +69,8 @@ public class ActionMenu extends JFrame
       menu.add(menub);
    }
    public void buildCenterPanel()
-   {action = new JPanel(new BorderLayout());
+   {
+      action = new JPanel(new BorderLayout());
       showHp = new JLabel("Level " + character.getLevel() + "     " + characterHp + "/" + character.getHp());
       showHp2 = new JLabel("Level " + enemy.getLevel(num) + "     " + enemy.getName(num));
       action.add(showHp, BorderLayout.NORTH);
@@ -113,7 +117,8 @@ public class ActionMenu extends JFrame
                new EndBattle(enemy.getXp(num), enemy.getMoney(num));      
             }
             if(characterHp > 0)
-            {action.remove(showHp);
+            {
+               action.remove(showHp);
                action.remove(showHp2);
                showHp = new JLabel("Level " + character.getLevel() + "     " + characterHp + "/" + character.getHp());
                action.add(showHp, BorderLayout.NORTH);
@@ -123,18 +128,24 @@ public class ActionMenu extends JFrame
                action.revalidate();
             }
             else
-            {dispose();
+            {
+               dispose();
                new EndBattle();
             }
          }
          else if(e.getSource() == defend)
          {
             if(enemy.getAtk(num) > character.getDef())
-            {characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef())/2;}
+            {
+               characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef())/2;
+            }
             else
-            {characterHp -= (enemy.getAtk(num)/20)/2;}
+            {
+               characterHp -= (enemy.getAtk(num)/20)/2;
+            }
             if(characterHp > 0)
-            {action.remove(showHp);
+            {
+               action.remove(showHp);
                action.remove(showHp2);
                showHp = new JLabel("Level " + character.getLevel() + "     " + characterHp + "/" + character.getHp());
                action.add(showHp, BorderLayout.NORTH);
@@ -144,28 +155,39 @@ public class ActionMenu extends JFrame
                action.revalidate();
             }
             else
-            {dispose();
+            {
+               dispose();
                new EndBattle();
             }
          
          }
          else if(e.getSource() == item)
-         {new Item();}
+         {
+            new Item();
+         }
          else if(e.getSource() == run)
-         {int i = (int)(Math.random()*10);
+         {
+            int i = (int)(Math.random()*10);
             if(i < 4)
-            {JOptionPane.showMessageDialog(null,"You escaped the battle");
+            {
+               JOptionPane.showMessageDialog(null,"You escaped the battle");
                dispose();
                new StageMenu(character,cha, enemy);
             }
             else
-            {JOptionPane.showMessageDialog(null,"You failed to escape");
+            {
+               JOptionPane.showMessageDialog(null,"You failed to escape");
                if(enemy.getAtk(num) > character.getDef())
-               {characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef());}
+               {
+                  characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef());
+               }
                else
-               {characterHp -= (enemy.getAtk(num)/20);}
+               {
+                  characterHp -= (enemy.getAtk(num)/20);
+               }
                if(characterHp > 0)
-               {action.remove(showHp);
+               {
+                  action.remove(showHp);
                   action.remove(showHp2);
                   showHp = new JLabel("Level " + character.getLevel() + "     " + characterHp + "/" + character.getHp());
                   action.add(showHp, BorderLayout.NORTH);
@@ -175,7 +197,8 @@ public class ActionMenu extends JFrame
                   action.revalidate();
                }
                else
-               {dispose();
+               {
+                  dispose();
                   new EndBattle();
                }
             }
@@ -183,11 +206,13 @@ public class ActionMenu extends JFrame
       }
    }
    public class Menu extends JFrame
-   {private int width = 100;
+   {
+      private int width = 100;
       private int height = 100;
       private JButton save, back;
       public Menu()
-      {setTitle("Menu");
+      {
+         setTitle("Menu");
          setSize(width, height);
          setLayout(new GridLayout(2,1));
          save = new JButton("Save Game");
@@ -212,19 +237,22 @@ public class ActionMenu extends JFrame
                JOptionPane.showMessageDialog(null, "The data has been saved");
             }
             else if (e.getSource() == back)
-            {dispose();
+            {
+               dispose();
             }
          }
       
       }
    }
    public class EndBattle extends JFrame
-   {private int width = 300;
+   {
+      private int width = 300;
       private int height = 400;
       private JButton ok;
       private JLabel battle, x, money, level, levelup;
       public EndBattle(int xp, int m)
-      {setTitle("SwordRPG");
+      {
+         setTitle("SwordRPG");
          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          setSize(width, height);
          int lvl = character.getLevel();
@@ -251,7 +279,8 @@ public class ActionMenu extends JFrame
          setVisible(true);
       }
       public EndBattle()
-      {setTitle("SwordRPG");
+      {
+         setTitle("SwordRPG");
          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          setSize(width, height);
          setLayout(new GridLayout(4,1));
@@ -269,14 +298,16 @@ public class ActionMenu extends JFrame
       private class OKListener implements ActionListener
       {
          public void actionPerformed(ActionEvent e)
-         {dispose();
+         {
+            dispose();
             new StageMenu(character, cha, enemy);}
       }
    }
    public class DrawRect1 extends JComponent
    {
       public void paint(Graphics g)
-      {  g.drawRect(0,5,300,15);
+      {  
+         g.drawRect(0,5,300,15);
          g.setColor(Color.green);
          g.fillRect(0,5,((characterHp*100/character.getHp())*3),15);
          g.setColor(Color.black);
@@ -286,13 +317,15 @@ public class ActionMenu extends JFrame
       }
    } 
    public class Item extends JFrame
-   {private int width = 300;
+   {
+      private int width = 300;
       private int height = 600;
       private JButton item0, item1, item2, item3, back;
       private JLabel item0Ef, item1Ef, item2Ef, item3Ef;
       private JPanel it0, it1, it2, it3;
       public Item()
-      {setSize(width, height);
+      {
+         setSize(width, height);
          setTitle("Inventory");
          setLayout(new GridLayout(5,1));
          buildItem0();
@@ -309,7 +342,8 @@ public class ActionMenu extends JFrame
          setVisible(true);
       }
       public void buildItem0()
-      {it0 = new JPanel(new GridLayout(2,1));
+      {
+         it0 = new JPanel(new GridLayout(2,1));
          item0 = new JButton("Potion    X " + character.getItem(0));
          item0.addActionListener(new ItemListener());
          item0Ef = new JLabel("Heals 100HP");
@@ -318,7 +352,8 @@ public class ActionMenu extends JFrame
          it0.add(item0Ef);
       }
       public void buildItem1()
-      {it1 = new JPanel(new GridLayout(2,1));
+      {
+         it1 = new JPanel(new GridLayout(2,1));
          item1 = new JButton("Potion*2   X " + character.getItem(1));
          item1.addActionListener(new ItemListener());
          item1Ef = new JLabel("Heals 500HP");
@@ -327,7 +362,8 @@ public class ActionMenu extends JFrame
          it1.add(item1Ef);
       }
       public void buildItem2()
-      {it2 = new JPanel(new GridLayout(2,1));
+      {
+         it2 = new JPanel(new GridLayout(2,1));
          item2 = new JButton("Potion*3   X " + character.getItem(2));
          item2.addActionListener(new ItemListener());
          item2Ef = new JLabel("Heals 2500HP");
@@ -336,7 +372,8 @@ public class ActionMenu extends JFrame
          it2.add(item2Ef);
       }
       public void buildItem3()
-      {it3 = new JPanel(new GridLayout(2,1));
+      {
+         it3 = new JPanel(new GridLayout(2,1));
          item3 = new JButton("Potion*4   X " + character.getItem(3));
          item3.addActionListener(new ItemListener());
          item3Ef = new JLabel("Heals 10000HP");
@@ -351,7 +388,8 @@ public class ActionMenu extends JFrame
             if(e.getSource() == item0)
             {  
                if(character.getItem(0) > 0)
-               {dispose();
+               {
+                  dispose();
                   int hp = characterHp;
                   character.useItem(0);
                   characterHp += 100;
@@ -359,11 +397,16 @@ public class ActionMenu extends JFrame
                      characterHp = character.getHp();
                   JOptionPane.showMessageDialog(null, "Healed " + (characterHp - hp)+ "HP");
                   if(enemy.getAtk(num) > character.getDef())
-                  {characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef());}
+                  {
+                     characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef());
+                  }
                   else
-                  {characterHp -= (enemy.getAtk(num)/20);}
+                  {
+                     characterHp -= (enemy.getAtk(num)/20);
+                  }
                   if(characterHp > 0)
-                  {action.remove(showHp);
+                  {
+                     action.remove(showHp);
                      action.remove(showHp2);
                      showHp = new JLabel("Level " + character.getLevel() + "     " + characterHp + "/" + character.getHp());
                      action.add(showHp, BorderLayout.NORTH);
@@ -373,18 +416,21 @@ public class ActionMenu extends JFrame
                      action.revalidate();
                   }
                   else
-                  {dispose();
+                  {
+                     dispose();
                      new EndBattle();
                   }
                }
                else
-               {JOptionPane.showMessageDialog(null, "Not enough potion");
+               {
+                  JOptionPane.showMessageDialog(null, "Not enough potion");
                }
             }
             else if(e.getSource() == item1)
             {
                if(character.getItem(1) > 0)
-               {dispose();
+               {
+                  dispose();
                   int hp = characterHp;
                   character.useItem(1);
                   characterHp += 500;
@@ -392,11 +438,16 @@ public class ActionMenu extends JFrame
                      characterHp = character.getHp();
                   JOptionPane.showMessageDialog(null, "Healed " + (characterHp - hp)+ "HP");
                   if(enemy.getAtk(num) > character.getDef())
-                  {characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef());}
+                  {
+                     characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef());
+                  }
                   else
-                  {characterHp -= (enemy.getAtk(num)/20);}
+                  {
+                     characterHp -= (enemy.getAtk(num)/20);
+                  }
                   if(characterHp > 0)
-                  {action.remove(showHp);
+                  {
+                     action.remove(showHp);
                      action.remove(showHp2);
                      showHp = new JLabel("Level " + character.getLevel() + "     " + characterHp + "/" + character.getHp());
                      action.add(showHp, BorderLayout.NORTH);
@@ -406,18 +457,21 @@ public class ActionMenu extends JFrame
                      action.revalidate();
                   }
                   else
-                  {dispose();
+                  {
+                     dispose();
                      new EndBattle();
                   }
                }
                else
-               {JOptionPane.showMessageDialog(null, "Not enough potion*2");
+               {
+                  JOptionPane.showMessageDialog(null, "Not enough potion*2");
                }
             }
             else if(e.getSource() == item2)
             {
                if(character.getItem(2) > 0)
-               {dispose();
+               {
+                  dispose();
                   int hp = characterHp;
                   character.useItem(2);
                   characterHp += 2500;
@@ -425,11 +479,16 @@ public class ActionMenu extends JFrame
                      characterHp = character.getHp();
                   JOptionPane.showMessageDialog(null, "Healed " + (characterHp - hp)+ "HP");
                   if(enemy.getAtk(num) > character.getDef())
-                  {characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef());}
+                  {
+                     characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef());
+                  }
                   else
-                  {characterHp -= (enemy.getAtk(num)/20);}
+                  {
+                     characterHp -= (enemy.getAtk(num)/20);
+                  }
                   if(characterHp > 0)
-                  {action.remove(showHp);
+                  {
+                     action.remove(showHp);
                      action.remove(showHp2);
                      showHp = new JLabel("Level " + character.getLevel() + "     " + characterHp + "/" + character.getHp());
                      action.add(showHp, BorderLayout.NORTH);
@@ -439,18 +498,21 @@ public class ActionMenu extends JFrame
                      action.revalidate();
                   }
                   else
-                  {dispose();
+                  {
+                     dispose();
                      new EndBattle();
                   }
                }
                else
-               {JOptionPane.showMessageDialog(null, "Not enough potion*3");
+               {
+                  JOptionPane.showMessageDialog(null, "Not enough potion*3");
                }
             }
             else if(e.getSource() == item3)
             {
                if(character.getItem(3) > 0)
-               {dispose();
+               {
+                  dispose();
                   int hp = characterHp;
                   character.useItem(3);
                   characterHp += 10000;
@@ -458,11 +520,16 @@ public class ActionMenu extends JFrame
                      characterHp = character.getHp();
                   JOptionPane.showMessageDialog(null, "Healed " + (characterHp - hp) + "HP");
                   if(enemy.getAtk(num) > character.getDef())
-                  {characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef());}
+                  {
+                     characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef());
+                  }
                   else
-                  {characterHp -= (enemy.getAtk(num)/20);}
+                  {
+                     characterHp -= (enemy.getAtk(num)/20);
+                  }
                   if(characterHp > 0)
-                  {action.remove(showHp);
+                  {
+                     action.remove(showHp);
                      action.remove(showHp2);
                      showHp = new JLabel("Level " + character.getLevel() + "     " + characterHp + "/" + character.getHp());
                      action.add(showHp, BorderLayout.NORTH);
@@ -472,17 +539,20 @@ public class ActionMenu extends JFrame
                      action.revalidate();
                   }
                   else
-                  {dispose();
+                  {
+                     dispose();
                      new EndBattle();
                   }
                }
                else
-               {JOptionPane.showMessageDialog(null, "Not enough potion*4");
+               {
+                  JOptionPane.showMessageDialog(null, "Not enough potion*4");
                }
             }
             else if(e.getSource() == back)
-            {dispose();}
-           
+            {
+               dispose();
+            }
          }
       }
    }

@@ -1,7 +1,7 @@
 XStea1th
 Male
 Paladin
-5
+100
 150
 1250
 1

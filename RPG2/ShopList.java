@@ -12,12 +12,14 @@ public class ShopList
    private int[] armorPrice = new int[10];
    private int[] itemPrice = new int[4];
    public ShopList() throws IOException
-   {String atk, atkP, def, defP, it, itP, str;
+   {
+      String atk, atkP, def, defP, it, itP, str;
       BufferedReader we = new BufferedReader(new FileReader("Shop/Weapon.txt"));
       BufferedReader ar = new BufferedReader(new FileReader("Shop/Armor.txt"));
       BufferedReader item = new BufferedReader(new FileReader("Shop/Item.txt"));
       for(int i = 0; i < weaponName.length; i++)
-      {  weaponName[i] = we.readLine();
+      {  
+         weaponName[i] = we.readLine();
          atk = we.readLine();
          atkP = we.readLine();
          str = we.readLine();
@@ -26,7 +28,8 @@ public class ShopList
       }
       we.close();
       for(int i = 0; i < armorName.length; i++)
-      {  armorName[i] = ar.readLine();
+      {  
+         armorName[i] = ar.readLine();
          def = ar.readLine();
          defP = ar.readLine();
          str = ar.readLine();
@@ -35,7 +38,8 @@ public class ShopList
       }
       ar.close();
       for(int i = 0; i < itemName.length; i++)
-      {itemName[i] = item.readLine();
+      {
+         itemName[i] = item.readLine();
          it = item.readLine();
          itP = item.readLine();
          str = item.readLine();

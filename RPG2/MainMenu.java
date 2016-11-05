@@ -88,26 +88,35 @@ public class MainMenu extends JFrame
          {  cha = 0;
             int  i = 1;
             while (i == 1 && cha < 3)
-            {File file = new File("Character" + cha + ".txt");
+            {
+               File file = new File("Character" + cha + ".txt");
                if (file.exists())
                {cha++;}
                else
                {i = 0;}
             }
             if(cha < 3)
-            {new Intro ();
-               dispose();}
+            {
+               new Intro ();
+               dispose();
+            }
             else
                JOptionPane.showMessageDialog(null, "Save Slots are full! Please delete a save file");
          }
          else if (e.getSource() == cont)
-         {dispose();
-            new Save();}
+         {
+            dispose();
+            new Save();
+         }
          else if(e.getSource() == list)
-         {dispose();
-            new MonsterList();}
+         {
+            dispose();
+            new MonsterList();
+         }
          else if (e.getSource() == exit)
-         {dispose();}
+         {
+            dispose();
+         }
       }
    }
 
@@ -131,7 +140,6 @@ public class MainMenu extends JFrame
          add (panel);
          setVisible (true);
       }
-   
    
       public void buildPanel ()
       {
@@ -248,12 +256,14 @@ public class MainMenu extends JFrame
       }
    }
    public class Save extends JFrame
-   {private JPanel save1, save2, save3, exit, delete ;
+   {
+      private JPanel save1, save2, save3, exit, delete ;
       private int width = 300;
       private int height = 400;
       private JButton load1, load2, load3, exitb, deleteb;
       public Save()
-      {setTitle("Save Files");
+      {
+         setTitle("Save Files");
          setSize(width, height);
          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          setLayout(new GridLayout(5,1));
@@ -270,11 +280,13 @@ public class MainMenu extends JFrame
          setVisible(true);
       }
       public void buildSave1()
-      {save1 = new JPanel();
+      {
+         save1 = new JPanel();
          save1.setBorder(BorderFactory.createTitledBorder("Save 1"));
          File file = new File("Character0.txt");
          if(file.exists())
-         {character[0] = new Character();
+         {
+            character[0] = new Character();
             try{
                character[0].loadSave(0);
             }
@@ -283,16 +295,19 @@ public class MainMenu extends JFrame
             load1.addActionListener(new LoadListener());
          }
          else
-         {load1 = new JButton("None");
+         {
+            load1 = new JButton("None");
          }
          save1.add(load1);
       }
       public void buildSave2()
-      {save2 = new JPanel();
+      {
+         save2 = new JPanel();
          save2.setBorder(BorderFactory.createTitledBorder("Save 2"));
          File file = new File("Character1.txt");
          if(file.exists())
-         {character[1] = new Character();
+         {
+            character[1] = new Character();
             try{
                character[1].loadSave(1);
             }
@@ -301,16 +316,19 @@ public class MainMenu extends JFrame
             load2.addActionListener(new LoadListener());
          }
          else
-         {load2 = new JButton("None");
+         {
+            load2 = new JButton("None");
          }
          save2.add(load2);
       }
       public void buildSave3()
-      {save3 = new JPanel();
+      {
+         save3 = new JPanel();
          save3.setBorder(BorderFactory.createTitledBorder("Save 3"));
          File file = new File("Character2.txt");
          if(file.exists())
-         {character[2] = new Character();
+         {
+            character[2] = new Character();
             try{
                character[2].loadSave(2);
             }
@@ -319,18 +337,21 @@ public class MainMenu extends JFrame
             load3.addActionListener(new LoadListener());
          }
          else
-         {load3 = new JButton("None");
+         {
+            load3 = new JButton("None");
          }
          save3.add(load3);
       }
       public void buildExit()
-      {exit = new JPanel();
+      {
+         exit = new JPanel();
          exitb = new JButton("Back to Main Menu");
          exitb.addActionListener(new LoadListener());
          exit.add(exitb);
       }
       public void buildDelete()
-      {delete = new JPanel();
+      {
+         delete = new JPanel();
          deleteb = new JButton("Delete Save File");
          deleteb.addActionListener(new LoadListener());
          delete.add(deleteb);
@@ -349,7 +370,8 @@ public class MainMenu extends JFrame
                new StageMenu(character[cha], cha, enemy); 
             }
             else if(e.getSource() == load2)
-            {cha = 1;
+            {
+               cha = 1;
                try{
                   character[cha].loadSave(cha);
                }
@@ -358,7 +380,8 @@ public class MainMenu extends JFrame
                new StageMenu(character[cha], cha, enemy);
             }
             else if(e.getSource() == load3)
-            {cha = 2;
+            {
+               cha = 2;
                try{
                   character[cha].loadSave(cha);
                }
@@ -367,11 +390,13 @@ public class MainMenu extends JFrame
                new StageMenu(character[cha], cha, enemy);
             }
             else if(e.getSource() == exitb)
-            {dispose();
+            {
+               dispose();
                new MainMenu();
             }
             else if(e.getSource() == deleteb)
-            {new Delete();
+            {
+               new Delete();
                dispose();
             }
          }    
@@ -379,12 +404,14 @@ public class MainMenu extends JFrame
    
    }
    public class Delete extends JFrame
-   {private JPanel save1, save2, save3, exit;
+   {
+      private JPanel save1, save2, save3, exit;
       private int width = 300;
       private int height = 300;
       private JButton load1, load2, load3, exitb;
       public Delete()
-      {setTitle("Save Files");
+      {
+         setTitle("Save Files");
          setSize(width, height);
          setLayout(new GridLayout(4,1));
          buildSave1();
@@ -398,11 +425,13 @@ public class MainMenu extends JFrame
          setVisible(true);
       }
       public void buildSave1()
-      {save1 = new JPanel();
+      {
+         save1 = new JPanel();
          save1.setBorder(BorderFactory.createTitledBorder("Save 1"));
          File file = new File("Character0.txt");
          if(file.exists())
-         {character[0] = new Character();
+         {
+            character[0] = new Character();
             try{
                character[0].loadSave(0);
             }
@@ -411,16 +440,19 @@ public class MainMenu extends JFrame
             load1.addActionListener(new DeleteListener());
          }
          else
-         {load1 = new JButton("None");
+         {
+            load1 = new JButton("None");
          }
          save1.add(load1);
       }
       public void buildSave2()
-      {save2 = new JPanel();
+      {
+         save2 = new JPanel();
          save2.setBorder(BorderFactory.createTitledBorder("Save 2"));
          File file = new File("Character1.txt");
          if(file.exists())
-         {character[1] = new Character();
+         {
+            character[1] = new Character();
             try{
                character[1].loadSave(1);
             }
@@ -429,16 +461,19 @@ public class MainMenu extends JFrame
             load2.addActionListener(new DeleteListener());
          }
          else
-         {load2 = new JButton("None");
+         {
+            load2 = new JButton("None");
          }
          save2.add(load2);
       }
       public void buildSave3()
-      {save3 = new JPanel();
+      {
+         save3 = new JPanel();
          save3.setBorder(BorderFactory.createTitledBorder("Save 3"));
          File file = new File("Character2.txt");
          if(file.exists())
-         {character[2] = new Character();
+         {
+            character[2] = new Character();
             try{
                character[2].loadSave(2);
             }
@@ -447,12 +482,14 @@ public class MainMenu extends JFrame
             load3.addActionListener(new DeleteListener());
          }
          else
-         {load3 = new JButton("None");
+         {
+            load3 = new JButton("None");
          }
          save3.add(load3);
       }
       public void buildExit()
-      {exit = new JPanel();
+      {
+         exit = new JPanel();
          exitb = new JButton("Back");
          exitb.addActionListener(new DeleteListener());
          exit.add(exitb);
@@ -467,16 +504,16 @@ public class MainMenu extends JFrame
                f.delete();
                JOptionPane.showMessageDialog(null, "Save file deleted");
                dispose();
-               new Save();}
+               new Save();
+            }
             else if(e.getSource() == load2)
             {
-               
                File f = new File("Character1.txt");
                f.delete();
                JOptionPane.showMessageDialog(null, "Save file deleted");
                dispose();
-               new Save();}
-               
+               new Save();
+            }   
             else if(e.getSource() == load3)
             {
                File f = new File("Character2.txt");
@@ -493,7 +530,8 @@ public class MainMenu extends JFrame
       }
    }
    public class MonsterList extends JFrame
-   {private int width = 370;
+   {
+      private int width = 370;
       private int height = 350;
       private JList <String> list;
       private JButton backB, okB;
@@ -502,7 +540,8 @@ public class MainMenu extends JFrame
       private JRadioButton lowHigh, highLow, nameSort;
       private JScrollPane scroll;
       public MonsterList()
-      {setSize(width, height);
+      {
+         setSize(width, height);
          setTitle("SwordRPG");
          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          setLayout(new GridLayout(2,2));
@@ -517,7 +556,8 @@ public class MainMenu extends JFrame
          setVisible(true);
       }
       public void buildSortPanel()
-      {sort = new JPanel(new GridLayout(3,1));
+      {
+         sort = new JPanel(new GridLayout(3,1));
          lowHigh = new JRadioButton("Level: low --> high");
          highLow = new JRadioButton("Level: high --> low");
          nameSort = new JRadioButton("Name: alphabetically");
@@ -535,7 +575,8 @@ public class MainMenu extends JFrame
          sort.add(nameSort);
       }
       public void buildMonsterListPanel()
-      {panel = new JPanel();
+      {
+         panel = new JPanel();
          monsterName = new String [100];
          for (int i = 0; i < monsterName.length; i++)
          {monsterName[i] = enemy.getName(i);}
@@ -549,7 +590,8 @@ public class MainMenu extends JFrame
          panel.add(scroll);
       }
       public void buildBackPanel()
-      {back = new JPanel(new BorderLayout());
+      {
+         back = new JPanel(new BorderLayout());
          backP = new JPanel(new FlowLayout());
          backB = new JButton("Back to Main Menu");
          backB.addActionListener(new ButtonListener());
@@ -557,7 +599,8 @@ public class MainMenu extends JFrame
          back.add(backP, BorderLayout.SOUTH);
       }
       public void buildOkPanel()
-      {ok = new JPanel(new BorderLayout());
+      {
+         ok = new JPanel(new BorderLayout());
          okP = new JPanel(new FlowLayout());
          okB = new JButton("View");
          okB.addActionListener(new ButtonListener());
@@ -569,9 +612,9 @@ public class MainMenu extends JFrame
          public void actionPerformed(ActionEvent e)
          {
             if(e.getSource() == lowHigh)
-            {panel.remove(scroll);
-               for (int i = 0; i < monsterName.length; i++)
-               {monsterName[i] = enemy.getName(i);}
+            {
+               panel.remove(scroll);
+               for (int i = 0; i < monsterName.length; i++) monsterName[i] = enemy.getName(i);
                list = new JList<> (monsterName);
                list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                list.setBorder(BorderFactory.createLineBorder(Color.black, 1));
@@ -584,9 +627,9 @@ public class MainMenu extends JFrame
                panel.repaint();
             }
             else if(e.getSource() == highLow)
-            {panel.remove(scroll);
-               for(int i = 0; i < monsterName.length; i++)
-               {monsterName[99-i] = enemy.getName(i);}
+            {
+               panel.remove(scroll);
+               for(int i = 0; i < monsterName.length; i++) monsterName[99-i] = enemy.getName(i);
                list = new JList<> (monsterName);
                list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                list.setBorder(BorderFactory.createLineBorder(Color.black, 1));
@@ -600,16 +643,17 @@ public class MainMenu extends JFrame
             
             }
             else if(e.getSource() == nameSort)
-            {panel.remove(scroll);
+            {
+               panel.remove(scroll);
                String temp;
-               for (int i = 0; i < monsterName.length; i++)
-               {monsterName[i] = enemy.getName(i);}
+               for (int i = 0; i < monsterName.length; i++) monsterName[i] = enemy.getName(i);
                for(int i = 0; i < monsterName.length; i++)
                {
                   for(int j = i+1; j < monsterName.length; j++)
                   {
                      if(monsterName[i].compareTo(monsterName[j]) > 0)
-                     {temp = monsterName[i];
+                     {
+                        temp = monsterName[i];
                         monsterName[i] = monsterName[j];
                         monsterName[j] = temp;
                      }
@@ -633,15 +677,18 @@ public class MainMenu extends JFrame
          public void actionPerformed(ActionEvent e)
          {
             if(e.getSource() == backB)
-            {dispose();
+            {
+               dispose();
                new MainMenu();
             }
             else if(e.getSource() == okB)
-            {int index = 0;
+            {
+               int index = 0;
                for(int i = 0; i < monsterName.length; i++)
                {
                   if(selected.compareTo(enemy.getName(i))== 0)
-                     index = i;}
+                     index = i;
+               }
                new EnemyStats(index);
             }
          }
@@ -649,18 +696,21 @@ public class MainMenu extends JFrame
       private class MonsterListener implements ListSelectionListener
       {
          public void valueChanged(ListSelectionEvent e)
-         {selected = (String) list.getSelectedValue();
+         {
+            selected = (String) list.getSelectedValue();
          }
       }
       
       public class EnemyStats extends JFrame
-      {private int width = 400;
+      {
+         private int width = 400;
          private int height = 350;
          private int index;
          private JPanel stats;
          private JLabel enemyImage, name, hp,level, atk, def, xp, money;
          public EnemyStats(int i)
-         {index = i;
+         {
+            index = i;
             setSize(width, height);
             setTitle("SwordRPG");
             setLayout(new BorderLayout());
@@ -671,19 +721,22 @@ public class MainMenu extends JFrame
             setVisible(true);
          }
          public void buildStats()
-         {stats = new JPanel(new GridLayout(7,1));
+         {
+            stats = new JPanel(new GridLayout(7,1));
             stats.setBorder(BorderFactory.createTitledBorder("STATS"));
             name = new JLabel   ("Name:        " + enemy.getName(index));
             level = new JLabel  ("Level:       " + enemy.getLevel(index));
             if(enemy.getMet(index) == 1)
-            {hp = new JLabel    ("HP:          " + enemy.getHp(index));
+            {
+               hp = new JLabel    ("HP:          " + enemy.getHp(index));
                atk = new JLabel    ("Attack:      " + enemy.getAtk(index));
                def = new JLabel    ("Defense:     " + enemy.getDef(index));
                xp = new JLabel     ("XP:          " + enemy.getXp(index) + "XP");
                money = new JLabel  ("Money:       " + enemy.getMoney(index) + "G");
             }
             else
-            {hp = new JLabel    ("HP:          ???");
+            {
+               hp = new JLabel    ("HP:          ???");
                atk = new JLabel    ("Attack:      ???");
                def = new JLabel    ("Defense:     ???");
                xp = new JLabel     ("XP:          ???XP");
