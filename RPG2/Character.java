@@ -1,6 +1,8 @@
 import java.io.*;
 import javax.swing.*;
 import java.awt.*;
+
+// Class for creating or importing existing character
 public class Character
 {
    private int atk, def, level, stage, xp, hp, money,weapon,armor;
@@ -183,7 +185,7 @@ public class Character
       def += d;
    }
 
-
+   // Method for leveling up
    public void levelUp (int x, int m)
    {
       xp += x;
@@ -211,7 +213,7 @@ public class Character
       }
    }
 
-
+   // Main method for saving character info into save file
    public void writeSave (int cha) throws IOException
    {
       PrintWriter save = new PrintWriter (new FileWriter ("Character" + cha + ".txt"));
@@ -234,7 +236,7 @@ public class Character
       save.close ();
    }
 
-
+   // Main method for loading save files
    public void loadSave (int cha) throws IOException
    {
       String lvl, at, df, stg, it[], x, h, mon,we,ar;

@@ -1,6 +1,8 @@
 import java.io.*;
 import java.awt.*;
 import javax.swing.*;
+
+// Class for importing Monster info
 public class Enemy 
 {
    private String name[] = new String[100];

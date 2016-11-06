@@ -1,6 +1,7 @@
 import java.util.*;
 import java.awt.*;
 import java.io.*;
+// Class for accessing weapon, armor and item list
 public class ShopList
 {  private String[] weaponName = new String[10];
    private String[] armorName = new String[10];

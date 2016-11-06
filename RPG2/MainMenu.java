@@ -3,6 +3,8 @@ import java.awt.*;
 import javax.swing.*;
 import java.io.*;
 import javax.swing.event.*;
+
+// Main menu, which contains 4 main functions: NewGame, Continue, MonsterList and Exit
 public class MainMenu extends JFrame
 {
    private int width = 300;
@@ -119,8 +121,8 @@ public class MainMenu extends JFrame
          }
       }
    }
-
-
+   
+   // Series of Panels that accompanies a New Game
    public class Intro extends JFrame
    {
       private JPanel panel;
@@ -255,6 +257,8 @@ public class MainMenu extends JFrame
          }
       }
    }
+   
+   // If clicked on Continue, will be led here. Loads or deletes game files
    public class Save extends JFrame
    {
       private JPanel save1, save2, save3, exit, delete ;
@@ -401,8 +405,8 @@ public class MainMenu extends JFrame
             }
          }    
       }
-   
    }
+   
    public class Delete extends JFrame
    {
       private JPanel save1, save2, save3, exit;
@@ -529,6 +533,9 @@ public class MainMenu extends JFrame
          }    
       }
    }
+   
+   /* If clicked on MonsterList, will be led here. Basically a monster wiki. Can only view stats
+      if encountered the monster in one of save files */
    public class MonsterList extends JFrame
    {
       private int width = 370;
@@ -670,8 +677,7 @@ public class MainMenu extends JFrame
                panel.revalidate();
                panel.repaint();}
          }
-      }
-      
+      }  
       private class ButtonListener implements ActionListener
       {
          public void actionPerformed(ActionEvent e)

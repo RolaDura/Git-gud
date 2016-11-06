@@ -2,6 +2,8 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
+
+// Class for Battle Panel, where battles are performed
 public class ActionMenu extends JFrame
 {  
    private int width = 700;
@@ -87,10 +89,14 @@ public class ActionMenu extends JFrame
       public void actionPerformed(ActionEvent e)
       {
          if(e.getSource()== menub)
-         {new Menu();}
+         {
+            new Menu();
+         }
          else if(e.getSource() == mainMenu)
-         {dispose();
-            new MainMenu();}
+         {
+            dispose();
+            new MainMenu();
+         }
       }
    }
    
@@ -110,9 +116,11 @@ public class ActionMenu extends JFrame
                if(enemy.getAtk(num) > character.getDef())
                   characterHp -= (enemy.getAtk(num) + characterHp/10 - character.getDef());
                else
-                  characterHp -= (enemy.getAtk(num)/15);}
+                  characterHp -= (enemy.getAtk(num)/15);
+            }
             else
-            {dispose();
+            {
+               dispose();
                enemy.met(num);
                new EndBattle(enemy.getXp(num), enemy.getMoney(num));      
             }
@@ -180,7 +188,7 @@ public class ActionMenu extends JFrame
                if(enemy.getAtk(num) > character.getDef())
                {
                   characterHp -= (enemy.getAtk(num) + characterHp/15 - character.getDef());
-               }
+               } 
                else
                {
                   characterHp -= (enemy.getAtk(num)/20);

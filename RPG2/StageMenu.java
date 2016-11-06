@@ -3,6 +3,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.event.*;
+
+/* The middle ground panel. Can perform a variety of functions, such as viewing character info,
+   entering ActionMenu, returning to MainMenu, Save, accessing Shop */
 public class StageMenu extends JFrame
 {
    private int width = 700;
@@ -181,33 +184,30 @@ public class StageMenu extends JFrame
    {
       public void actionPerformed(ActionEvent e)
       {
+         dispose();
          if (e.getSource() == lowest)
          {
-            dispose();
             new Area1();
          }
          else if(e.getSource() == low)
          {
-            dispose();
             new Area2();
          }
          else if(e.getSource() == mid)
          {
-            dispose();
             new Area3();
          }
          else if(e.getSource() == high)
          {
-            dispose();
             new Area4();
          }
          else if(e.getSource() == highest)
          {  
-            dispose();
             new Area5();
          }
       }   
    }
+   // Class for viewing Character info
    public class CharacterStats extends JFrame
    {
       private int width = 400;
@@ -301,6 +301,8 @@ public class StageMenu extends JFrame
          panel7.add(money);
       }
    }
+   
+   // From here on will be Panels that show Area where we may click to begin battle
    public class Area1 extends JFrame
    {
       private int width = 300;
@@ -866,6 +868,9 @@ public class StageMenu extends JFrame
          }
       }
    }
+   // From here ends the Area Panels
+   
+   // Shop Panel executed after clicking on Shop from StageMenu
    public class Shop extends JFrame
    {
       private int width = 600;
@@ -1006,24 +1011,21 @@ public class StageMenu extends JFrame
          public void valueChanged(ListSelectionEvent e)
          {
             selected = (String) shop.getSelectedValue();
+            shop2.remove(scroll2);
             if(selected.compareTo("Weapons") == 0)
             {  
-               shop2.remove(scroll2);
                buildWeapon();
-               shop2.repaint();
-               shop2.revalidate();}
+            }
             else if(selected.compareTo("Armors") == 0)
             {  
-               shop2.remove(scroll2);
                buildArmor();   
-               shop2.revalidate();
-               shop2.repaint();}
+            }
             else if(selected.compareTo("Items") == 0)
             {     
-               shop2.remove(scroll2);
                buildItem();
-               shop2.revalidate();
-               shop2.repaint();}
+            }
+            shop2.revalidate();
+            shop2.repaint();
          }
       }
       
